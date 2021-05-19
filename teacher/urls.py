@@ -1,6 +1,8 @@
 from django.urls import path
 from teacher import views
 from django.contrib.auth.views import LoginView
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
 path('teacherclick', views.teacherclick_view),
@@ -18,4 +20,4 @@ path('teacher-add-question', views.teacher_add_question_view,name='teacher-add-q
 path('teacher-view-question', views.teacher_view_question_view,name='teacher-view-question'),
 path('see-question/<int:pk>', views.see_question_view,name='see-question'),
 path('remove-question/<int:pk>', views.remove_question_view,name='remove-question'),
-]
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
